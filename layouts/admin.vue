@@ -10,7 +10,7 @@
       >
         <div class="sider-header">
           <nuxt-link to="/" title="iBlog">
-            <img src="/images/iBlog-logo.png">
+            <img src="/images/logo.png">
           </nuxt-link>
           <h4>后台管理</h4>
         </div>
@@ -183,6 +183,7 @@ export default Vue.extend({
 </script>
 <style scoped>
 .sider-header {
+  text-align: center;
   padding: 25px;
   transition: all 0.2s;
   background: url("/images/header-sider.png") no-repeat;

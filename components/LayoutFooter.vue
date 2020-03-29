@@ -4,7 +4,7 @@
     <a
       href="https://github.com/eshengsky/iBlog"
       target="_blank"
-    >iBlog</a>
+    >FBlog</a>
     <span v-if="settings.recordInfo" class="record-info">
       |
       <a href="http://www.beian.miit.gov.cn">{{ settings.recordInfo }}</a>

@@ -82,7 +82,6 @@ export default Vue.extend({
         script.parentNode.insertBefore(hm, script);
       }
     }
-
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
         this.showToTop = true;
@@ -115,7 +114,7 @@ export default Vue.extend({
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  height: 70px;
+  height: 50px;
   background: #fff;
   border-bottom: 1px solid rgba(234, 234, 234, 0.8);
   z-index: 999;
@@ -123,7 +122,7 @@ export default Vue.extend({
 }
 
 .navbar .navbar-header {
-  height: 70px;
+  height: 50px;
   padding: 0 15px;
 }
 
@@ -150,8 +149,8 @@ export default Vue.extend({
 }
 
 .navbar .navbar-brand h4 p {
-  margin: 5px 0 0;
-  font-size: 14px;
+  margin: -2px 0 0;
+  font-size: 12px;
   color: #666;
 }
 
@@ -185,7 +184,7 @@ export default Vue.extend({
 .navbar-collapse a {
   display: block;
   font-size: 16px;
-  line-height: 69px;
+  line-height: 49px;
   padding: 0 13px;
   border-bottom: 1px solid transparent;
   color: #333;

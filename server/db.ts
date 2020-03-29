@@ -11,14 +11,14 @@ import { Profile } from './models/profile';
 import { Auth } from './models/auth';
 
 interface IModels {
-    Post: Model<IPost>;
-    Cache: Model<ICache>;
-    Category: Model<ICategory>,
-    Comment: Model<IComment>,
-    Guestbook: Model<IComment>,
-    Setting: Model<ISetting>,
-    Profile: Model<IProfile>,
-    Auth: Model<IAuth>
+  Post: Model<IPost>,
+  Cache: Model<ICache>,
+  Category: Model<ICategory>,
+  Comment: Model<IComment>,
+  Guestbook: Model<IComment>,
+  Setting: Model<ISetting>,
+  Profile: Model<IProfile>,
+  Auth: Model<IAuth>
 }
 
 export default class DB {

@@ -32,15 +32,8 @@
               <div slot="dropdownRender" slot-scope="menu">
                 <v-nodes :vnodes="menu" />
                 <a-divider style="margin: 4px 0;" />
-                <a
-                  href="/admin/category-manage"
-                  target="_blank"
-                  class="link-category-btn"
-                >
-                  <font-awesome-icon
-                    :icon="['fas', 'plus']"
-                    style="margin-right: 4px;"
-                  />新的分类
+                <a href="/admin/category-manage" target="_blank" class="link-category-btn">
+                  <font-awesome-icon :icon="['fas', 'plus']" style="margin-right: 4px;"/>新的分类
                 </a>
               </div>
             </a-select>

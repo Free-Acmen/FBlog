@@ -14,7 +14,15 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": ["@types/node", "@types/nuxtjs__auth", "@nuxt/types", "@nuxt/vue-app", "@nuxtjs/axios", "ant-design-vue/types", "@dicebear/avatars/typings/svgson"]
+    "types": [
+      "@types/node", 
+      "@types/nuxtjs__auth", 
+      "@nuxt/types", 
+      "@nuxt/vue-app", 
+      "@nuxtjs/axios", 
+      "ant-design-vue/types", 
+      "@dicebear/avatars/typings/svgson"
+    ]
   },
   "exclude": ["node_modules"]
 }

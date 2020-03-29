@@ -18,7 +18,6 @@ export default Vue.extend({
     CategoryList,
     PostList
   },
-
   async asyncData ({ $axios, params, error }: any) {
     const { code, data }: IResp = await $axios.$get('/api/categories');
     if (code === 1) {

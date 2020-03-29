@@ -27,7 +27,7 @@ export default Vue.extend({
 <style scoped>
 .category-wrap {
   width: 250px;
-  top: 95px;
+  top: 75px;
   bottom: 0;
   margin-left: 15px;
   position: fixed;

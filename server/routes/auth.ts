@@ -89,7 +89,10 @@ router.post('/login', async (req, res) => {
       {
         username: 'Admin'
       },
-      config.jwtSecret
+      config.jwtSecret,
+      {
+        expiresIn: 60 * 1
+      }
     );
 
     res.json({
