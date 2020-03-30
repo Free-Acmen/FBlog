@@ -1,22 +1,22 @@
-# iBlog
-基于 Node.js 的开源个人博客系统，现代化的 UI 和用户体验。采用响应式布局，支持移动端访问。  
-**不仅仅是博客，更是 Demo**，是适合新人入门学习的完整项目。
+# FBlog
+<!-- 基于 Node.js 的开源个人博客系统，现代化的 UI 和用户体验。采用响应式布局，支持移动端访问。  
+**不仅仅是博客，更是 Demo**，是适合新人入门学习的完整项目。 -->
 
-## 界面预览
+<!-- ## 界面预览
 * 博客首页
 ![首页](./preview_1.png)
 * 后台管理
 ![后台](./preview_2.png)
 * 移动端
-![移动端](./preview_3.png)
+![移动端](./preview_3.png) -->
 
-## 在线实例
+<!-- ## 在线实例
 我的博客 [https://skysun.name/](https://skysun.name/)
 
 ## 分支说明
 * 当前分支 (v2.0.0) 基于 [TypeScript](https://www.typescriptlang.org/) + [NuxtJS](https://nuxtjs.org/)
 * [v1.0.0](https://github.com/eshengsky/iBlog/tree/v1.0.0) 分支基于 JavaScript + [ExpressJS](https://expressjs.com/)
-* [iBlog.Net](https://github.com/eshengsky/iBlog.Net) 基于 C# + [ASP.NET](https://dotnet.microsoft.com/apps/aspnet)
+* [iBlog.Net](https://github.com/eshengsky/iBlog.Net) 基于 C# + [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) -->
 
 ## 技术构成
 * 开发语言 [TypeScript](https://www.typescriptlang.org/)
@@ -100,7 +100,7 @@ $ pm2 start pm2.json
 ### 使用noginx
 [noginx](https://github.com/eshengsky/noginx) 是基于 Node.js 的 HTTP 及反向代理服务器（类似 nginx），如果你有多台 iBlog 服务器实例，你可以使用 [noginx](https://github.com/eshengsky/noginx) 进行代理转发和负载均衡。
 
-## 许可协议
+<!-- ## 许可协议
 MIT License
 
 Copyright (c) 2020 Sky.Sun 孙正华
@@ -121,4 +121,4 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+SOFTWARE. -->

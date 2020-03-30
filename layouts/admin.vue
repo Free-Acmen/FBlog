@@ -78,6 +78,15 @@
               <span>系统设置</span>
             </nuxt-link>
           </a-menu-item>
+          <a-menu-item key="user-manage" title="用户管理">
+            <nuxt-link to="/admin/user-manage">
+              <font-awesome-icon
+                :icon="['fas', 'cogs']"
+                fixed-width
+              />
+              <span>用户管理</span>
+            </nuxt-link>
+          </a-menu-item>
         </a-menu>
       </a-layout-sider>
       <a-layout :style="{ marginLeft }" style="transition: all .2s;">
