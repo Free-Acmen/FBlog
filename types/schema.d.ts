@@ -2,11 +2,18 @@ import { Document } from 'mongoose';
 
 export interface IAuth extends Document {
     _id: string;
-
+    /**
+     * 用户名称
+     */ 
+    username: string;
     /**
      * 密码
      */
     password: string;
+    /**
+     * 用户名称
+     */
+    isAdmin: boolean;
 
     /**
      * 创建时间

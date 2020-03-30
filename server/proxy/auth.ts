@@ -15,7 +15,9 @@ export async function newAccount (params) {
   }
   const now = new Date();
   const entity = new Auth({
+    username: params.username,
     password: params.password,
+    isAdmin: params.isAdmin,
     createTime: now,
     modifyTime: now
   });

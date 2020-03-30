@@ -7,9 +7,12 @@ export class Auth {
     constructor () {
       const schema = new Schema<IAuth>(
         {
+          //用户名
+          username: {type: String},
           // 密码（已md5加密）
           password: { type: String },
-
+          // 管理员
+          isAdmin: {type: Boolean},
           // 创建时间
           createTime: { type: Date, default: new Date() },
 

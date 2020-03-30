@@ -4,7 +4,12 @@
       后台登录
     </h2>
     <p class="auth-desc">
-      Admin
+      <a-input
+        ref="input"
+        v-model="username"
+        size="large"
+        placeholder="请输入用户名"
+      />
     </p>
     <div class="auth-input">
       <a-input-password
@@ -27,6 +32,7 @@ import md5 from 'blueimp-md5';
 export default Vue.extend({
   data () {
     return {
+      username: 'Admin',
       pwd: ''
     };
   },
@@ -42,6 +48,7 @@ export default Vue.extend({
       this.$auth
         .loginWith('local', {
           data: {
+            username: this.username,
             password: md5(this.pwd)
           }
         })
