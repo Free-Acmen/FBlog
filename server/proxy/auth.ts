@@ -29,6 +29,7 @@ export async function newAccount (params) {
 
 export async function findAccount (params) {
   const account = await Auth.findOne({
+    username: params.username,
     password: params.password
   });
   return {

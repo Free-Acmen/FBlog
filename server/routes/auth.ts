@@ -81,19 +81,18 @@ router.get('/user', jwt({ secret: config.jwtSecret }), (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const data = await proxy.findAccount(req.body);
+    console.log(data)
     if (!data.account) {
       return res.sendStatus(401);
     }
 
-    console.log(req);
-
     const accessToken = jsonwebtoken.sign(
       {
-        username: 'FreeAcmen'
+        username: req.body.username//'FreeAcmen'
       },
       config.jwtSecret,
       {
-        expiresIn: '48h'
+        expiresIn: '24h'
       }
     );
 

@@ -33,12 +33,12 @@ const upload = multer({
 const router = Router();
 
 // JWT middleware
-router.use(
-  jwt({
-    secret: config.jwtSecret,
-    credentialsRequired: false
-  })
-);
+// router.use(
+//   jwt({
+//     secret: config.jwtSecret,
+//     credentialsRequired: false
+//   })
+// );
 
 router.get('/categories', async (_req, res) => {
   let resp: IResp;
