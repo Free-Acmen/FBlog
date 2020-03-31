@@ -5,7 +5,7 @@
     </h2>
     <p class="auth-desc">
       <a-input
-        ref="input"
+        ref="username"
         v-model="username"
         size="large"
         placeholder="请输入用户名"
@@ -32,7 +32,7 @@ import md5 from 'blueimp-md5';
 export default Vue.extend({
   data () {
     return {
-      username: 'Admin',
+      username: 'FreeAcmen',
       pwd: ''
     };
   },
@@ -63,6 +63,6 @@ export default Vue.extend({
 
 <style scoped>
 .auth-input {
-  margin: 60px 0 20px;
+  margin: 0 0 20px;
 }
 </style>

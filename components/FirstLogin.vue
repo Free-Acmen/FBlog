@@ -104,7 +104,6 @@ export default Vue.extend({
           if (code === 1) {
             this.$emit('init');
           } else {
-            console.error(message);
             this.$message.error('操作失败！');
             this.btnLoading = false;
           }
