@@ -85,13 +85,15 @@ router.post('/login', async (req, res) => {
       return res.sendStatus(401);
     }
 
+    console.log(req);
+
     const accessToken = jsonwebtoken.sign(
       {
         username: 'FreeAcmen'
       },
       config.jwtSecret,
       {
-        expiresIn: 60 * 1
+        expiresIn: '48h'
       }
     );
 
