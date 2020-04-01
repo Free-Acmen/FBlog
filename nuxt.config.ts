@@ -85,7 +85,7 @@ const config: Configuration = {
       login: '/auth/login',
       logout: '/',
       callback: '/auth/login',
-      home: '/'
+      home: '/admin'
     }
   },
   /*
