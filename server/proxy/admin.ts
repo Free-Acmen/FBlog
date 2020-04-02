@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import DB from '../db';
 import { otherCategoryItem } from '../models/category';
 import { IPost, IProfile } from '../../types/schema';
-const { Category, Post, Comment, Guestbook, Setting, Profile } = DB.Models;
+const { Category, Post, Comment, Guestbook, Setting, Profile, Auth} = DB.Models;
 
 export async function getCategories () {
   const categories = await Category.find(
@@ -721,4 +721,9 @@ export async function getComentsAndGuestbookStats () {
     comments: stats[0],
     guestbook: stats[1]
   };
+};
+
+export async function getUserList() {
+  const userList = await Auth.find({}).exec();
+  return userList;
 };

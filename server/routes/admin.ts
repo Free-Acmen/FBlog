@@ -468,4 +468,22 @@ router.get('/commentsAndGuestbookStats', async (_req, res) => {
   res.json(resp);
 });
 
+//获取用户
+router.get('/userList', async (_req, res) => {
+  let resp: IResp;
+  try {
+    const userList = await proxy.getUserList();
+    resp = {
+      code: 1,
+      data: userList
+    };
+  } catch (err) {
+    console.error(err);
+    resp = {
+      code: -1
+    };
+  }
+  res.json(resp);
+});
+
 export default router;

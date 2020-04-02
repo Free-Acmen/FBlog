@@ -20,22 +20,20 @@
 
       <a-table 
       :columns="columns" 
-      :dataSource="tableData" 
+      :dataSource="userList" 
       :loading="isLoading" 
       :pagination="false"
-      :scroll="{ x: 785 }"
       row-key="_id"
+      :scroll="{ x: 985 }"
       :row-selection="rowSelection">
-        <template slot="name" slot-scope="text">{{text}}</template>
-        <template slot="customTitle"><a-icon type="smile-o" /> Name</template>
-        <template slot="tags" slot-scope="tags">
-          <a-tag
-            v-for="tag in tags"
-            :color="tag==='loser' ? 'volcano' : (tag.length > 5 ? 'geekblue' : 'green')"
-            :key="tag"
-          >
-            {{tag.toUpperCase()}}
-          </a-tag>
+        <template slot="admin" slot-scope="text">
+          {{text ? '是' : '否'}}
+        </template>
+        <template slot="createTime" slot-scope="text">
+          {{text | toDate}}
+        </template>
+        <template slot="modifyTime" slot-scope="text">
+          {{text | toDate}}
         </template>
         <template slot="action" slot-scope="text, row">
           <div class="action-td">
@@ -64,68 +62,56 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import { IResp } from '@/types';
-  import { IAuth } from '@/types/schema';
+import Vue from 'vue';
+import moment from 'moment';
+import { IResp } from '@/types';
+import { IAuth } from '@/types/schema';
 
 
-  const columns = [
-    {
-      dataIndex: 'name',
-      key: 'name',
-      slots: { title: 'customTitle' },
-      scopedSlots: { customRender: 'name' },
-    },
-    {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
-    },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
-    },
-    {
-      title: 'Tags',
-      key: 'tags',
-      dataIndex: 'tags',
-      scopedSlots: { customRender: 'tags' },
-    },
-    {
-      title: 'Action',
-      key: 'action',
-      fixed: 'right',
-      scopedSlots: { customRender: 'action' },
-    },
-  ];
+const columns = [
+  {
+    title: '账号',
+    dataIndex: 'username',
+    key: 'username'
+  },
+  {
+    title: '密码',
+    dataIndex: 'password'
+  },
+  {
+    title: '管理员',
+    dataIndex: 'isAdmin',
+    key: 'isAdmin',
+    width: 80,
+    align: 'center',
+    scopedSlots: { customRender: 'admin' },
+  },
+  {
+    title: '创建时间',
+    key: 'createTime',
+    dataIndex: 'createTime',
+    width: 160,
+    align: 'center',
+    scopedSlots: { customRender: 'createTime' }
+  },
+  {
+    title: '修改时间',
+    key: 'modifyTime',
+    dataIndex: 'modifyTime',
+    width: 160,
+    align: 'center',
+    scopedSlots: { customRender: 'modifyTime' }
+  },
+  {
+    title: 'Action',
+    key: 'action',
+    fixed: 'right',
+    align: 'center',
+    width: 130,
+    scopedSlots: { customRender: 'action' },
+  },
+];
 
-  const tableData = [
-    {
-      _id: 12121213332,
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-      tags: ['nice', 'developer'],
-    },
-    {
-      _id: 12121212,
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-      tags: ['loser'],
-    },
-    {
-      _id: 121212333,
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-      tags: ['cool', 'teacher'],
-    },
-  ];
 
 export default Vue.extend({
   name: 'PageUserManage',
@@ -133,7 +119,7 @@ export default Vue.extend({
   data(){
     return {
       columns,
-      tableData,
+      userList:[],
       selectedRowKeys: [],
       isLoading: false
     }
@@ -156,7 +142,20 @@ export default Vue.extend({
       };
     }
   },
+  created(){
+    this.getUserList()
+  },
   methods: {
+    async getUserList(){
+      this.isLoading=true
+      const { code, data }: IResp = await this.$axios.$get('/api/admin/userList');
+      if(code === 1){
+        this.userList = data
+      }else{
+        this.$message.error('请求失败！');
+      }
+      this.isLoading = false
+    },
     delAll ():void{
 
     },
@@ -177,5 +176,13 @@ export default Vue.extend({
   .action-td .ant-btn {
     width: 32px;
     padding: 0;
+  }
+
+  .ant-table-body {
+    overflow-x: auto !important;
+  }
+
+  .btn-wrap{
+    margin-bottom: 10px;
   }
 </style>
