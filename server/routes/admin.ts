@@ -486,4 +486,40 @@ router.get('/userList', async (_req, res) => {
   res.json(resp);
 });
 
+router.post('/userList', async (req, res) => {
+  let resp: IResp;
+  try {
+    const userList = await proxy.newUser(req.body);
+    resp = {
+      code: 1,
+      data: userList
+    };
+  } catch (err) {
+    console.error(err);
+    resp = {
+      code: -1,
+      message: err.message
+    };
+  }
+  res.json(resp);
+});
+
+router.put('/userList', async (req, res) => {
+  let resp: IResp;
+  try {
+    const userList = await proxy.editUser(req.query.uid, req.body);
+    resp = {
+      code: 1,
+      data: userList
+    };
+  } catch (err) {
+    console.error(err);
+    resp = {
+      code: -1,
+      message: err.message
+    };
+  }
+  res.json(resp);
+});
+
 export default router;

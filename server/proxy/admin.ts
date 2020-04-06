@@ -727,3 +727,27 @@ export async function getUserList() {
   const userList = await Auth.find({}).exec();
   return userList;
 };
+
+export async function newUser(params){
+  const now = new Date();
+  const entity = new Auth({
+    createTime: now,
+    modifyTime: now,
+    isAdmin: false,
+    ...params
+  });
+  const newUser = await entity.save();
+  return {
+    user: newUser
+  };
+}
+
+export async function editUser(uid, params) {
+  params.modifyTime = new Date();
+  const user = await Auth.findByIdAndUpdate(uid, params, {
+    new: true
+  }).exec();
+  return {
+    user
+  };
+};

@@ -57,6 +57,39 @@
           </div>
         </template>
       </a-table>
+      <a-modal
+        v-model="isModalShow"
+        :title="modalTitle"
+        :confirm-loading="confirmLoading"
+        :closable="false"
+        :destroy-on-close="true"
+        @ok="saveUser"
+      >
+      <a-form label-position="top" :form="form">
+        <a-form-item label="用户名" :colon="false">
+          <a-input
+            v-decorator="['userName', userNameOpts]"
+            placeholder="请输入用户名"
+            allow-clear
+          />
+        </a-form-item>
+        <a-form-item label="密码" :colon="false">
+          <a-input-password 
+            v-decorator="['password', passwordOpts]"
+            placeholder="请输入密码"
+            allow-clear
+          />
+        </a-form-item>
+        <a-form-item label="确认密码" :colon="false">
+          <a-input-password 
+            v-decorator="['rePassword', rePasswordOpts]"
+            placeholder="请再次输入密码"
+            allow-clear
+          />
+        </a-form-item>
+      </a-form>
+      
+      </a-modal>
     </div>
   </div>
 </template>
@@ -64,6 +97,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import moment from 'moment';
+import md5 from 'blueimp-md5';
 import { IResp } from '@/types';
 import { IAuth } from '@/types/schema';
 
@@ -112,7 +146,6 @@ const columns = [
   },
 ];
 
-
 export default Vue.extend({
   name: 'PageUserManage',
   layout: 'admin',
@@ -120,11 +153,41 @@ export default Vue.extend({
     return {
       columns,
       userList:[],
+      isModalShow: false,
+      confirmLoading: false,
+      modalTitle:'新增用户',
       selectedRowKeys: [],
-      isLoading: false
+      isLoading: false,
     }
   },
   computed: {
+    form () {
+      return this.$form.createForm(this);
+    },
+    userNameOpts (): object {
+      return {
+        rules: [
+          {required: true,message: '用户名不能为空！'},
+          {validator: this.checkUsername}
+        ]
+      };
+    },
+    passwordOpts(): object {
+      return {
+        rules: [
+          {required: true, message: '密码不能为空！'},
+          {validator: this.checkPassword}
+        ]
+      }
+    },
+    rePasswordOpts(): object {
+      return {
+        rules: [
+          {required: true, message: '密码确认不能为空！'},
+          {validator: this.checkrePassword}
+        ]
+      }
+    },
     delDisabled (): boolean {
       return this.selectedRowKeys.length === 0;
     },
@@ -136,7 +199,7 @@ export default Vue.extend({
         },
         getCheckboxProps: record => ({
           props: {
-            disabled: false//[allCategoryItem._id, this.otherCategoryId].includes(record._id)
+            disabled: false //[allCategoryItem._id, this.otherCategoryId].includes(record._id)
           }
         })
       };
@@ -156,17 +219,43 @@ export default Vue.extend({
       }
       this.isLoading = false
     },
+    checkUsername(_rule, value, callback){
+      callback();
+    },
+    checkPassword(_rule, value, callback){
+      var regx = /[1-9a-zA-Z]{6,10}/
+      if(value && !regx.test(value)){
+        callback("密码须由字母数字组成, 6-10个字符范围！");
+      }else{
+        callback();
+      }
+    },
+    checkrePassword(_rule, value, callback){
+      const form = (this as any).form;
+      if (value && value !== form.getFieldValue('password')) {
+        callback('两次输入的密码不一致！');
+      } else {
+        callback();
+      }
+    },
     delAll ():void{
 
     },
     addNew():void {
-
+      this.isModalShow = true
     },
     editUser(row){
 
     },
     del(uid){
 
+    },
+    saveUser(){
+      this.form.validateFieldsAndScroll((err, values) => {
+        if (!err) {
+          console.log('Received values of form: ', values);
+        }
+      });
     }
   }
 });
